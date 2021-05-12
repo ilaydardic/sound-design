@@ -35,31 +35,29 @@ public class PlayerController : MonoBehaviour
         //Turn left and right
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0, 0, Time.deltaTime * rotationSpeed);
-            Debug.Log("Pressing A!");
+            transform.Rotate(0, Time.deltaTime * -rotationSpeed, 0);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(0, 0, Time.deltaTime * -rotationSpeed);
-            Debug.Log("Pressing D!");
+            transform.Rotate(0, Time.deltaTime * rotationSpeed, 0);
         }
 
         //Change altitude
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.Rotate(0, Time.deltaTime * rotationSpeed, 0);
+            transform.Rotate(Time.deltaTime * -rotationSpeed, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            transform.Rotate(0, Time.deltaTime * -rotationSpeed, 0);
+            transform.Rotate(Time.deltaTime * rotationSpeed, 0, 0);
         }
     }
 
     void MovePlayer()
     {
-        transform.position += transform.up * currentSpeed * Time.deltaTime;
+        transform.position += transform.forward * currentSpeed * Time.deltaTime;
     }
 
     void changeMovementSpeed()

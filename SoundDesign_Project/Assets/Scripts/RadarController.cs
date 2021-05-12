@@ -10,35 +10,17 @@ public class RadarController : MonoBehaviour
     [SerializeField]
     public Transform m_Pipe;
 
-    [SerializeField]
-    public Transform m_Radar;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Resource")
         {
-            GameObject[] resources = GameObject.FindGameObjectsWithTag("Resource");
-            foreach(GameObject target in resources)
-            {
-                float goldDistance = Vector3.Distance(target.transform.position, transform.position);
-                Debug.Log("Gold Found! It's " + goldDistance + " away!");
-            }  
+            float goldDistance = Vector3.Distance(other.transform.position, transform.position);
+            Debug.Log("Gold Found! It's " + goldDistance + " away!");
         }
         else if (other.tag == "Obstacle")
         {
-            Debug.Log("Danger! Pipe!");
+            float goldDistance = Vector3.Distance(other.transform.position, transform.position);
+            Debug.Log("Pipe Found! It's " + goldDistance + " away!");
         }
     }
 }
