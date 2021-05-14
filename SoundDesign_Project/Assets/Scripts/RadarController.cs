@@ -16,12 +16,12 @@ public class RadarController : MonoBehaviour
         if (other.tag == "Resource")
         {
             float goldDistance = Vector3.Distance(other.transform.position, transform.position);
-            Debug.Log("Gold Found! It's " + goldDistance + " away!");
+            //Debug.Log("Gold Found! It's " + goldDistance + " away!");
         }
         else if (other.tag == "Obstacle")
         {
             float goldDistance = Vector3.Distance(other.transform.position, transform.position);
-            Debug.Log("Pipe Found! It's " + goldDistance + " away!");
+            //Debug.Log("Pipe Found! It's " + goldDistance + " away!");
         }
     }   
 }
