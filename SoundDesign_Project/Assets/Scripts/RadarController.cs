@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RadarController : MonoBehaviour
 {
@@ -22,5 +23,5 @@ public class RadarController : MonoBehaviour
             float goldDistance = Vector3.Distance(other.transform.position, transform.position);
             Debug.Log("Pipe Found! It's " + goldDistance + " away!");
         }
-    }
+    }   
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Resource
   - Obstacle
+  - RadarBlip
   layers:
   - Default
   - TransparentFX

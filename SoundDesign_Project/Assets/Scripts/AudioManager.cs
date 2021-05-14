@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public Transform playerTransform;
 
     [Header("Light Manager")]
+    public Canvas darkImage;
     //How long the light will stay on
     public float lightOnTimer = 60f;
     //How long the light will stay off
@@ -35,6 +36,8 @@ public class AudioManager : MonoBehaviour
         AltitudeWarning();
 
         LightCountdown();
+
+        LightsOut();
     }
 
     void AltitudeWarning()
@@ -63,5 +66,14 @@ public class AudioManager : MonoBehaviour
             lightsOff = false;
             lightCountdown = lightOnTimer;
         }
+    }
+
+    void LightsOut()
+    {
+        if (lightsOff == true)
+        {
+            darkImage.enabled = true;
+        }
+        else darkImage.enabled = false;
     }
 }
