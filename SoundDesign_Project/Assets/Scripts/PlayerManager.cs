@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Sounds")]
+    public AudioSource goldCollectSound;
+    //public AudioSource pipeHitSound;
+    public AudioSource alarmHighSound;
+    public AudioSource alarmDeepSound;
+
+    private bool alarmSoundPlayed;
+
     public float altitude;
     public int goldScore = 0;
     public int health = 10;
@@ -31,14 +39,55 @@ public class PlayerManager : MonoBehaviour
         if (altitude >= 30 && altitude < 40)
         {
             depthUI.color = Color.yellow;
+
+            if (!alarmSoundPlayed)
+            {
+                alarmHighSound.Play();
+                alarmSoundPlayed = true;
+            }
         }
-        else if (altitude >= -30 && altitude < -40)
+        else if (altitude <= -30 && altitude > -40)
         {
             depthUI.color = Color.yellow;
+
+            if (!alarmSoundPlayed)
+            {
+                alarmDeepSound.Play();
+                alarmSoundPlayed = true;
+            }
         }
         if (altitude >= 40 || altitude <= -40)
         {
             depthUI.color = Color.red;
+
+            if (alarmHighSound.pitch == 1)
+            {
+                alarmHighSound.pitch += 0.1f;
+            }
+
+            if (alarmDeepSound.pitch == 1)
+            {
+                alarmDeepSound.pitch += .1f;
+            }
+        }
+        else if (altitude < 30 && altitude > -30)
+        {
+            depthUI.color = Color.white;
+
+            alarmHighSound.Stop();
+
+            if (alarmHighSound.pitch > 1)
+            {
+                alarmHighSound.pitch = 1;
+            }
+
+            alarmDeepSound.Stop();
+            if (alarmDeepSound.pitch > 1)
+            {
+                alarmDeepSound.pitch = 1;
+            }
+
+            alarmSoundPlayed = false;
         }
         
     }
@@ -47,12 +96,15 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.tag == "Resource")
         {
-            Debug.Log("Got milk!");
+            goldCollectSound.Play();
             goldScore += 1;
+
+            Destroy(other.gameObject);
         }
 
         else if (other.tag == "Obstacle")
         {
+            //pipeHitSound.Play();
             health -= 1;
         }
     }

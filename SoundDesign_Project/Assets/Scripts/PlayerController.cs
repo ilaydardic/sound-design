@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Sounds")]
+    public AudioSource speedSoundNormal;
+
+    private bool speedSoundPlayed;
+
     [Header("Vehicle Turning and Altitude")]
     [SerializeField]
     public float rotationSpeed = 0.5f;
@@ -65,12 +70,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && currentSpeed < playerSpeedFast)
         {
             currentSpeed += speedChange;
+            speedSoundNormal.pitch += .1f;
         }
 
         if (Input.GetKeyDown(KeyCode.S) && currentSpeed > playerSpeedSlow)
         {
             currentSpeed -= speedChange;
+            speedSoundNormal.pitch -= .1f;
         }
     }
-
 }

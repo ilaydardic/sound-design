@@ -5,6 +5,10 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
+    [Header("Sounds")]
+    public AudioSource lightOff;
+    public AudioClip lightOffClip;
+    public AudioSource heatSound;
 
     [Header("Altitude Tracker")]
     //Player's y position
@@ -21,8 +25,14 @@ public class AudioManager : MonoBehaviour
     //Keeps track of the light status
     public bool lightsOff;
 
+    private bool lightSoundPlayed;
+    private bool heatSoundPlayed;
+
+    public float heatSoundStart = 10;
+    public float heatSoundEnd = 0;
+
     void Start()
-    {
+    {     
         lightCountdown = lightOnTimer;
     }
 
@@ -38,6 +48,20 @@ public class AudioManager : MonoBehaviour
         LightCountdown();
 
         LightsOut();
+
+        LightOffSound();
+
+        if (lightCountdown <= heatSoundStart && !heatSoundPlayed && !lightsOff)
+        {
+            Debug.Log("Blio");
+            heatSound.Play();
+            heatSoundPlayed = true;
+        }
+        else if (lightsOff == true)
+        {
+            heatSound.Stop();
+            heatSoundPlayed = false;
+        }
     }
 
     void AltitudeWarning()
@@ -74,6 +98,20 @@ public class AudioManager : MonoBehaviour
         {
             darkImage.enabled = true;
         }
-        else darkImage.enabled = false;
+        else
+        {
+            darkImage.enabled = false;
+            lightSoundPlayed = false;
+        }
+
+    }
+
+    void LightOffSound()
+    {
+        if (lightsOff == true && lightSoundPlayed == false)
+        {
+            lightOff.Play();
+            lightSoundPlayed = true;
+        }
     }
 }
