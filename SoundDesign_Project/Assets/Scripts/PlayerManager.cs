@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     public Transform m_Transform;
     public Text healthUI;
     public Text goldUI;
+    public Text depthUI;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +26,28 @@ public class PlayerManager : MonoBehaviour
 
         goldUI.text = goldScore.ToString();
         healthUI.text = health.ToString();
+        depthUI.text = altitude.ToString("0");
+
+        if (altitude >= 30 && altitude < 40)
+        {
+            depthUI.color = Color.yellow;
+        }
+        else if (altitude >= -30 && altitude < -40)
+        {
+            depthUI.color = Color.yellow;
+        }
+        if (altitude >= 40 || altitude <= -40)
+        {
+            depthUI.color = Color.red;
+        }
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Resource")
         {
+            Debug.Log("Got milk!");
             goldScore += 1;
         }
 
