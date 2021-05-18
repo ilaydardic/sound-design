@@ -84,6 +84,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3728543081770925299}
   - component: {fileID: 3728543081770925298}
+  - component: {fileID: 4483205860582421600}
+  - component: {fileID: 4467888036547208052}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -120,12 +122,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d6494829298f8428366b51b09ac83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedSoundNormal: {fileID: 0}
   rotationSpeed: 15
   playerSpeedSlow: 5
   playerSpeedMid: 10
   playerSpeedFast: 15
   currentSpeed: 0
   speedChange: 5
+--- !u!65 &4483205860582421600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3728543081770925301}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4467888036547208052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3728543081770925301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1004c05ecfde6b649a1f538c8b62a2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCollectSound: {fileID: 0}
+  alarmHighSound: {fileID: 0}
+  alarmDeepSound: {fileID: 0}
+  altitude: 0
+  goldScore: 0
+  health: 10
+  m_Transform: {fileID: 3728543081770925299}
+  healthUI: {fileID: 0}
+  goldUI: {fileID: 0}
+  depthUI: {fileID: 0}
 --- !u!1 &3728543082302084338
 GameObject:
   m_ObjectHideFlags: 0

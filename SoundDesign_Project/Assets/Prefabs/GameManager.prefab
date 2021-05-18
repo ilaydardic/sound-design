@@ -43,9 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815b80e387f57574a8e44bd7e8451b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightOff: {fileID: 0}
+  lightOffClip: {fileID: 8300000, guid: fba0e3383c36e0f46b2e20d564afcd15, type: 3}
+  heatSound: {fileID: 0}
   altitude: 0
   playerTransform: {fileID: 0}
-  lightOnTimer: 60
-  lightOffTimer: 10
+  darkImage: {fileID: 0}
+  lightOnTimer: 40
+  lightOffTimer: 40
   lightCountdown: 0
   lightsOff: 0
+  heatSoundStart: 10
+  heatSoundEnd: 0
