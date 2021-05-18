@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
 
     private bool speedSoundPlayed;
 
-    [Header("Vehicle Turning and Altitude")]
-    [SerializeField]
+    [Header("Vehicle UI")]
+    public RectTransform speedMeter;
+
     public float rotationSpeed = 0.5f;
 
     [Header("Vehicle Speed Settings")]
@@ -71,12 +72,14 @@ public class PlayerController : MonoBehaviour
         {
             currentSpeed += speedChange;
             speedSoundNormal.pitch += .1f;
+            speedMeter.Rotate(0, 0, -60);
         }
 
         if (Input.GetKeyDown(KeyCode.S) && currentSpeed > playerSpeedSlow)
         {
             currentSpeed -= speedChange;
             speedSoundNormal.pitch -= .1f;
+            speedMeter.Rotate(0, 0, +60);
         }
     }
 }

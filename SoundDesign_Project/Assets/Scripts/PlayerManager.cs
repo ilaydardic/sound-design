@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Sounds")]
     public AudioSource goldCollectSound;
-    //public AudioSource pipeHitSound;
+    public AudioSource pipeHitSound;
     public AudioSource alarmHighSound;
     public AudioSource alarmDeepSound;
 
@@ -21,13 +21,7 @@ public class PlayerManager : MonoBehaviour
     public Text healthUI;
     public Text goldUI;
     public Text depthUI;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         altitude = m_Transform.position.y;
@@ -72,7 +66,7 @@ public class PlayerManager : MonoBehaviour
         }
         else if (altitude < 30 && altitude > -30)
         {
-            depthUI.color = Color.white;
+            depthUI.color = new Color(44.0f / 255.0f, 45.0f / 255.0f, 52.0f / 255.0f, 255.0f / 255.0f);
 
             alarmHighSound.Stop();
 
@@ -104,8 +98,11 @@ public class PlayerManager : MonoBehaviour
 
         else if (other.tag == "Obstacle")
         {
-            //pipeHitSound.Play();
+
+            pipeHitSound.Play();
             health -= 1;
+
+            Destroy(other.gameObject);
         }
     }
 }
